@@ -1,8 +1,8 @@
--- Database: challenge
+-- Database: operations
 
-DROP DATABASE IF EXISTS challenge;
+-- DROP DATABASE IF EXISTS operations;
 
-CREATE DATABASE challenge;
+-- CREATE DATABASE operations;
 
 create type account_type as enum(
 	'SAVING',
@@ -19,15 +19,15 @@ create type transaction_type as enum(
 CREATE CAST (varchar AS transaction_type) WITH INOUT AS IMPLICIT;
 
 CREATE TABLE person(
-   id serial NOT NULL,
-   name varchar(50) NOT NULL,
-   gender varchar(50) NOT NULL,
-   age integer NOT NULL,
-   identification varchar(13) NOT NULL,
-   address varchar(100) NOT NULL,
-   phone varchar(10) NOT NULL,
-   PRIMARY KEY (id),
-   unique(identification)
+                       id serial NOT NULL,
+                       name varchar(50) NOT NULL,
+                       gender varchar(50) NOT NULL,
+                       age integer NOT NULL,
+                       identification varchar(13) NOT NULL,
+                       address varchar(100) NOT NULL,
+                       phone varchar(10) NOT NULL,
+                       PRIMARY KEY (id),
+                       unique(identification)
 );
 
 CREATE TABLE client
@@ -53,7 +53,7 @@ CREATE TABLE account
 );
 
 create table transaction(
-                            serial int not null,
+                            id serial not null,
                             created_date date not null,
                             type transaction_type not null,
                             amount numeric(10,2) not null,
