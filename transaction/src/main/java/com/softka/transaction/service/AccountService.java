@@ -18,4 +18,7 @@ public interface AccountService {
 
     String deactivateAccount(AccountDto accountDto) throws  GeneralException;
 
+    AccountDto findAccountByAccountNumber(String accountNumber) throws GeneralException;
+
+
 }

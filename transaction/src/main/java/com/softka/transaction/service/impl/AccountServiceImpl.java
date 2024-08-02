@@ -51,10 +51,20 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public String deactivateAccount(AccountDto accountDto) throws GeneralException {
         Account accountDB =  accountRepository.findByAccountNumber(accountDto.getAccountNumber());
-//        ClientResponseDto callClientDB = clientFeignClient.findClientById(accountDto.getClientId());
         accountDB.setStatus(accountDto.getStatus());
         accountRepository.save(accountDB);
         return "Account status whit number: " + accountDto.getAccountNumber() + " updated.";
     }
+
+    @Override
+    public AccountDto findAccountByAccountNumber(String accountNumber) throws GeneralException {
+        try {
+            Account account =  accountRepository.findByAccountNumber(accountNumber);
+            return mapper.accountToAccountDto(account);
+        }catch (Exception exception){
+            throw new GeneralException(exception.getMessage());
+        }
+    }
+
 
 }
