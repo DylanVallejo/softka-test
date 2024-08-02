@@ -124,7 +124,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"CREDIT\",\r\n    \"amount\": 600,\r\n    \"accountNumber\": \"d74c26a3\"\r\n}",
+							"raw": "{\r\n    \"type\": \"CREDIT\",\r\n    \"amount\": 600,\r\n    \"accountNumber\": \"2ed274b4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -241,6 +241,49 @@
 								"v1",
 								"account",
 								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener cuenta por numero de cuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/account/2ed274b4",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"2ed274b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener cuentas por cliente id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/account/list/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"list",
+								"1"
 							]
 						}
 					},
