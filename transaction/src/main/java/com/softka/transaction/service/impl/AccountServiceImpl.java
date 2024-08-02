@@ -13,6 +13,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -40,6 +41,20 @@ public class AccountServiceImpl implements AccountService {
         }catch (Exception exception){
             throw new GeneralException(exception.getMessage() );
         }
+    }
+
+    @Override
+    public List<Account> findAllByClientId(Long clientId) {
+        return accountRepository.findAllByClientId(clientId);
+    }
+
+    @Override
+    public String deactivateAccount(AccountDto accountDto) throws GeneralException {
+        Account accountDB =  accountRepository.findByAccountNumber(accountDto.getAccountNumber());
+//        ClientResponseDto callClientDB = clientFeignClient.findClientById(accountDto.getClientId());
+        accountDB.setStatus(accountDto.getStatus());
+        accountRepository.save(accountDB);
+        return "Account status whit number: " + accountDto.getAccountNumber() + " updated.";
     }
 
 }

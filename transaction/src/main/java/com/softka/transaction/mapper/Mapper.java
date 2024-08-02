@@ -1,9 +1,6 @@
 package com.softka.transaction.mapper;
 
-import com.softka.transaction.dto.AccountDto;
-import com.softka.transaction.dto.AccountResponseDto;
-import com.softka.transaction.dto.TransactionDto;
-import com.softka.transaction.dto.TransactionResponseDto;
+import com.softka.transaction.dto.*;
 import com.softka.transaction.entity.Account;
 import com.softka.transaction.entity.Transaction;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.beans.FeatureDescriptor;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
@@ -52,6 +51,16 @@ public class Mapper {
         TransactionResponseDto transactionResponseDto = new TransactionResponseDto();
         BeanUtils.copyProperties(transaction, transactionResponseDto);
         return transactionResponseDto;
+    }
+
+    public List<ReportTransactionDto> transactionsToTransactionsDtos(List<Transaction> transactions){
+        return  transactions.stream()
+                .map( transaction -> {
+                    ReportTransactionDto transactionDto = new ReportTransactionDto();
+                    BeanUtils.copyProperties(transaction, transactionDto,getNullPropertyNames(transaction));
+                    return transactionDto;
+                }).toList();
+
     }
 
 

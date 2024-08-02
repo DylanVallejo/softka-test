@@ -29,7 +29,7 @@ public class Transaction {
     @Column(name = "before_balance")
     private Double beforeBalance;
 
-    @Column(name = "after_balance")
+    @Column(name = "after_balance") // BALANCE
     private Double afterBalance;
 
     @Column(name = "account_id")

@@ -11,7 +11,7 @@ import lombok.Data;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // let the job of generate id's to spring
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

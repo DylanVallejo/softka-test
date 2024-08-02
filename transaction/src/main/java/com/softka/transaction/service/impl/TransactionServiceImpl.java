@@ -15,6 +15,9 @@ import com.softka.transaction.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +39,11 @@ public class TransactionServiceImpl implements TransactionService {
         }
         return response;
 
+    }
+
+    @Override
+    public List<Transaction> findByAccountAndDate(Long accountId, LocalDate initialDate, LocalDate finalDate) {
+        return transactionRepository.findByAccountIdAndDateBetween(accountId,initialDate,finalDate);
     }
 
     public Account findAccount(TransactionDto transactionDto){
