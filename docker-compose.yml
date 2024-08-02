@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  db:
+    build: .
+    container_name: softka
+    environment:
+      POSTGRES_DB: operations
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5454:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./BaseDatos.sql:/docker-entrypoint-initdb.d/BaseDatos.sql
+
+volumes:
+  db_data:

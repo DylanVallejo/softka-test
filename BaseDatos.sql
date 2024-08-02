@@ -1,12 +1,12 @@
 -- Database: operations
-
 -- DROP DATABASE IF EXISTS operations;
-
+-- crear la base
 -- CREATE DATABASE operations;
-
+-- conectarse a la base
+-- \connect operations
 create type account_type as enum(
-	'SAVING',
-	'CHECKING'
+	'CREDIT',
+	'DEBIT'
 );
 
 CREATE CAST (varchar AS account_type) WITH INOUT AS IMPLICIT;
